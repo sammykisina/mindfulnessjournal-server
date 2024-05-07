@@ -24,7 +24,7 @@ final class IndexController
 
         return Response::successResponse(
             data: [
-                'message' => 'all users fetched successfully.',
+                'message' => 'users fetched successfully.',
                 'users' => UserResource::collection(
                     resource: $users
                 ),
