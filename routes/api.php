@@ -18,12 +18,16 @@ Route::get('/', function () {
 Route::prefix('auth')->as('auth:')->group(function () {
     Route::post('register', Auth\RegisterController::class)->name(name: 'register');
     Route::post('login', Auth\LoginController::class)->name(name: 'login');
+    Route::post('send-reset-code', Auth\ForgotPasswordCodeGeneratorController::class)->name(name: 'send-reset-code');
+    Route::post('reset-password', Auth\ResetPasswordController::class)->name(name: 'reset-password');
 
     Route::group([
         'middleware' => ['auth:sanctum'],
     ], function () {
         Route::get('profile', Auth\ProfileController::class)->name(name: 'profile');
         Route::post('logout', Auth\LogoutController::class)->name(name: 'logout');
+        Route::patch('{user}/update', Auth\UpdateController::class)->name(name: 'update');
+        Route::post('{user}/profile/upload', Auth\ProfilePictureUpload::class)->name(name: 'update');
     });
 });
 
@@ -36,7 +40,7 @@ Route::group([
     Route::prefix('admin')->as('admin:')->group(function () {
         Route::prefix('users')->as('users:')->group(function () {
             Route::get('/', Admin\User\IndexController::class)->name(name: 'users');
-            Route::patch('{user}', Admin\User\UpdateController::class)->name(name: 'update');
+            Route::patch('{user}/make-admin', Admin\User\MakeUserAdminController::class)->name(name: 'make-admin');
         });
 
         Route::prefix('activities')->as('activities:')->group(function () {
@@ -62,6 +66,8 @@ Route::group([
             Route::patch('{journal}/gratitude', User\Journal\StoreDailyGratitudeController::class)->name(name: 'gratitude');
 
             Route::get('/daily-quote', User\GetDailyQuoteController::class)->name(name: 'daily-quote')->middleware(CacheResponse::class);
+
+            Route::get('/weekly-mood', User\Journal\JournalDataFoFeelingGraphController::class)->name(name: 'weekly-mood');
         });
 
         Route::prefix('activity')->as('activity:')->group(function () {

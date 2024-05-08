@@ -18,7 +18,7 @@ final class ActivityRecommendationsController
     public function __invoke(Request $request)
     {
         $activities = QueryBuilder::for(Activity::class)
-         ->allowedFilters('title')
+            ->allowedFilters('title')
             ->where('count', '>=', 5)
             ->limit(5)
             ->get();

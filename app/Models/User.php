@@ -24,6 +24,10 @@ class User extends Authenticatable
         'email',
         'password',
         'user_type',
+        'profile_pic',
+        'is_super_admin',
+        'two_factor_code',
+        'two_factor_expires_at',
     ];
 
     protected $hidden = [
@@ -35,7 +39,9 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'two_factor_expires_at' => 'datetime',
             'password' => 'hashed',
+            'is_super_admin' => 'bool',
         ];
     }
 

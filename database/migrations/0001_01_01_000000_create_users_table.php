@@ -20,7 +20,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('user_type')->default(value: UserTypes::USER->value);
+
+            $table->string('two_factor_code')->nullable();
+            $table->datetime('two_factor_expires_at')->nullable();
+
+            $table->boolean('is_super_admin')->default(value: false);
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('profile_pic')->nullable();
             $table->string('password');
             $table->rememberToken();
 

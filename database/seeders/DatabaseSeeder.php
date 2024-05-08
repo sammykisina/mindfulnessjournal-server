@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@example.com',
             'user_type' => UserTypes::ADMIN->value,
+            'is_super_admin' => true,
         ]);
     }
 }
