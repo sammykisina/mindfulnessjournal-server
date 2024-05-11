@@ -20,6 +20,7 @@ final class IndexController
         $activities = QueryBuilder::for(Activity::class)
             ->allowedSorts('created_at')
             ->allowedFilters('id', 'title')
+            ->allowedIncludes(['assets'])
             ->get();
 
         return Response::successResponse(

@@ -23,4 +23,11 @@ final class ActivityService
             'count' => $activity->count + 1,
         ]);
     }
+
+    public function updateActivity(array $activity_data, Activity $activity):bool {
+        return $activity->update([
+            'title' => $activity_data['title'],
+            'content' => $activity_data['content'],
+        ]);
+    }
 }

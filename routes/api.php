@@ -47,6 +47,11 @@ Route::group([
             Route::get('/', Admin\Activity\IndexController::class)->name(name: 'activities');
             Route::post('/', Admin\Activity\StoreController::class)->name(name: 'store');
             Route::patch('{activity}', Admin\Activity\UpdateController::class)->name(name: 'update');
+
+            Route::controller(Admin\Activity\ActivityImageController::class)->group(function () {
+                Route::post('/{activity}/image', 'uploadImage')->name(name: 'activity-image-upload');
+                Route::delete('/{activityImage}/image', 'deleteImage')->name(name: 'activity-image-delete');
+            });
         });
     });
 });

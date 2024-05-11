@@ -27,7 +27,7 @@ class SendPasswordResetCode extends Notification
         return (new MailMessage)
             ->subject('Password reset code')
             ->greeting('Hello')
-            ->line('Your password reset code is ' . $notifiable->two_factor_code)
+            ->line('Your password reset code is '.$notifiable->two_factor_code)
             ->line('This code will expire in 10 minutes')
             ->line('Thank you for using our application!');
     }

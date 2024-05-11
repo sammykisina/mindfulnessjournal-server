@@ -8,7 +8,6 @@ use App\Http\Concerns\Response;
 use App\Http\Requests\Api\V1\Auth\ResetPasswordRequest;
 use App\Http\Services\Api\V1\Auth\AuthService;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use JustSteveKing\StatusCode\Http;
 
@@ -23,7 +22,7 @@ final class ResetPasswordController
 
     public function __invoke(ResetPasswordRequest $request)
     {
-        Log::info('code' . $request->validated()['code']);
+        Log::info('code'.$request->validated()['code']);
 
         $user = User::query()->where('two_factor_code', $request->validated()['code'])->first();
 
@@ -35,7 +34,6 @@ final class ResetPasswordController
                 status: Http::NOT_ACCEPTABLE()
             );
         }
-
 
         if ($user->two_factor_expires_at->lt(now())) {
             return Response::errorResponse(

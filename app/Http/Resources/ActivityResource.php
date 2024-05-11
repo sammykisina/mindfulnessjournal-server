@@ -22,6 +22,9 @@ class ActivityResource extends JsonResource
             'title' => $this->resource->title,
             'thumbnail' => Config::get('app.url').Storage::url($this->resource->thumbnail),
             'content' => $this->resource->content,
+            'assets' => AssetResource::collection(resource: $this->whenLoaded(
+                relationship: 'assets'
+            )),
         ];
     }
 }

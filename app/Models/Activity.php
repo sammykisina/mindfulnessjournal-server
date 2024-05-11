@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Activity extends Model
 {
@@ -17,4 +18,12 @@ class Activity extends Model
         'content',
         'count',
     ];
+
+    public function assets(): HasMany
+    {
+        return $this->hasMany(
+            related: ActivityImage::class,
+            foreignKey: 'activity_id'
+        );
+    }
 }
