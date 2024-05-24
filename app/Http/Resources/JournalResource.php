@@ -20,7 +20,7 @@ class JournalResource extends JsonResource
             'id' => $this->resource->id,
             'feeling' => $this->resource->feeling,
             'emoji' => $this->resource->emoji,
-            'date' => Carbon::parse($this->resource->date)->format('l jS \of F Y h:i:s A'),
+            'date' => Carbon::parse($this->resource->created_at)->format('l jS \of F Y h:i:s A'),
             'daily_gratitude' => $this->resource->daily_gratitude,
         ];
     }

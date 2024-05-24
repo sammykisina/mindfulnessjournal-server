@@ -16,7 +16,7 @@ final class IndexController
     public function __invoke(Request $request)
     {
         $journals = QueryBuilder::for(Journal::class)
-            ->allowedSorts('-date')
+            ->allowedSorts('-created_at')
             ->allowedFilters('id')
             ->get();
 

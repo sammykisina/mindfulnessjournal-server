@@ -15,7 +15,7 @@ class Journal extends Model
     protected $fillable = [
         'feeling',
         'emoji',
-        'date',
+        // 'date',
         'user_id',
         'daily_gratitude',
     ];

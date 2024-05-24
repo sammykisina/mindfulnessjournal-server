@@ -21,7 +21,6 @@ class StoreJournalRequest extends FormRequest
             ],
             'date' => [
                 'string',
-                'required',
             ],
         ];
     }

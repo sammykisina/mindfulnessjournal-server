@@ -14,7 +14,6 @@ final class JournalService
         return Journal::query()->create([
             'feeling' => $journal_data['feeling'],
             'emoji' => $journal_data['emoji'],
-            'date' => Carbon::parse($journal_data['date']),
             'user_id' => auth()->user()->id,
         ]);
     }

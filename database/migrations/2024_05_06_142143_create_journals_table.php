@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string(column: 'emoji');
             $table->text(column: 'daily_gratitude')->nullable();
 
-            $table->timestamp(column: 'date');
+            // $table->timestamp(column: 'date');
 
             $table->foreignId(column: 'user_id')->constrained();
 
